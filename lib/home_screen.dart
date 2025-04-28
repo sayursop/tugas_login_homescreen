@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toko_online/gantitema.dart'; // pastikan path benar
+import 'package:toko_online/login_screen.dart'; // tambahkan ini supaya bisa navigate ke LoginScreen
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -23,10 +24,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
       length: 3,
       child: Scaffold(
         backgroundColor: _isDark ? Colors.black : const Color.fromARGB(255, 143, 202, 229),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.logout, color: _isDark ? Colors.white : Colors.black),
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                );
+              },
+            ),
+          ],
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 40),
+              const SizedBox(height: 10),
 
               // Username
               Row(
@@ -85,8 +101,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   CircleAvatar(
                     radius: 18,
                     backgroundColor: Colors.grey,
-                    child:
-                        const Icon(Icons.bookmark_border, color: Colors.white),
+                    child: const Icon(Icons.bookmark_border, color: Colors.white),
                   ),
                 ],
               ),
@@ -105,7 +120,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: Text(
                             '230103086 - TI 23A3',
                             style: TextStyle(
-                                color: _isDark ? Colors.grey : Colors.black54),
+                              color: _isDark ? Colors.grey : Colors.black54,
+                            ),
                           ),
                         ),
                         Gantitema(onTemaChange: _ubahTema),
