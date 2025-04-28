@@ -22,7 +22,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        backgroundColor: _isDark ? Colors.black : const Color.fromARGB(255, 54, 67, 73),
+        backgroundColor: _isDark ? Colors.black : const Color.fromARGB(255, 143, 202, 229),
         body: SingleChildScrollView(
           child: Column(
             children: [
